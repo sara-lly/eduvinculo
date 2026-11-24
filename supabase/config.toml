@@ -1,0 +1,3 @@
+# Configuração mínima para a Supabase CLI (supabase link / db push / functions deploy).
+# Os demais valores usam os padrões da CLI.
+project_id = "eduvinculo"
