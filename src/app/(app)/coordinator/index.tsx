@@ -8,10 +8,11 @@ import { dashboardRepository } from '@/data/repositories/dashboardRepository';
 import { formatPercent } from '@/domain/attendance';
 import { useSchoolContext } from '@/features/auth/sessionStore';
 import { ChipSelect } from '@/ui/components/forms';
-import { ListItem, MiniBarChart, Screen, StatTile, TileGrid } from '@/ui/components/layout';
-import { AppText, Badge, Card, SectionTitle } from '@/ui/components/primitives';
+import { MiniBarChart, Screen, StatTile, TileGrid } from '@/ui/components/layout';
+import { AppText, Badge, Card } from '@/ui/components/primitives';
 import { CachedDataNotice, ErrorState, InlineMessage, LoadingState } from '@/ui/components/states';
 import { spacing } from '@/ui/theme';
+import { ProfileCard, QuickActions, SectionCard, SectionRow } from '@/features/home/homeComponents';
 
 type Period = '7' | '30' | '90';
 
@@ -34,8 +35,14 @@ export default function CoordinatorDashboard() {
 
   return (
     <Screen onRefresh={() => void q.refetch()} refreshing={q.isRefetching}>
-      <AppText variant="title">Painel da escola</AppText>
-      <AppText variant="caption" style={{ marginBottom: spacing.md }}>{`Período: ${formatDateBR(from)} a ${formatDateBR(today)}`}</AppText>
+      <ProfileCard subtitle={`Painel da escola · ${formatDateBR(from)} a ${formatDateBR(today)}`} />
+      <QuickActions actions={[
+        { icon: 'alert-circle-outline', label: 'Faltas recorrentes', onPress: () => router.push('/coordinator/alerts'), badge: q.data?.flagged_students || undefined },
+        { icon: 'clipboard-outline', label: 'Acompanhamento', onPress: () => router.push('/coordinator/followups'), badge: q.data?.open_followups || undefined },
+        { icon: 'megaphone-outline', label: 'Comunicado', onPress: () => router.push('/announcement/new') },
+        { icon: 'document-text-outline', label: 'Relatórios', onPress: () => router.push('/reports') },
+      ]} />
+      <View style={{ height: spacing.lg }} />
       <ChipSelect<Period> value={period} onChange={setPeriod} options={[
         { value: '7', label: '7 dias' }, { value: '30', label: '30 dias' }, { value: '90', label: '90 dias' },
       ]} />
@@ -58,29 +65,22 @@ export default function CoordinatorDashboard() {
             <StatTile label="Acompanhamentos abertos" value={String(q.data.open_followups)} icon="clipboard-outline" />
           </TileGrid>
 
-          <SectionTitle title="Evolução da frequência (%)" />
-          <Card>
-            {daily.length > 0 ? <MiniBarChart data={daily} threshold={75} /> : <AppText variant="caption">Sem chamadas no período.</AppText>}
-          </Card>
+          <SectionCard title="Evolução da frequência (%)" icon="trending-up-outline" tone="success">
+            <View style={{ paddingHorizontal: spacing.lg, paddingBottom: spacing.lg }}>
+              {daily.length > 0 ? <MiniBarChart data={daily} threshold={75} /> : <AppText variant="caption">Sem chamadas no período.</AppText>}
+            </View>
+          </SectionCard>
 
-          <SectionTitle title="Turmas com mais ausências" />
-          <View style={{ borderRadius: 14, overflow: 'hidden' }}>
+          <SectionCard title="Turmas com mais ausências" icon="podium-outline" count={q.data.classrooms.length} tone="danger"
+            empty="Sem dados no período." maxVisible={5}>
             {q.data.classrooms.map((c, i) => (
-              <ListItem key={c.id} title={`${i + 1}. ${c.name}`}
+              <SectionRow key={c.id} title={`${i + 1}. ${c.name}`}
                 subtitle={`Frequência ${formatPercent(c.attendance_percent === null ? null : Number(c.attendance_percent))}`}
                 right={<Badge label={`${c.absences} faltas`} tone={c.absences > 0 ? 'danger' : 'success'} />}
                 onPress={() => router.push(`/classroom/${c.id}`)} />
             ))}
-            {q.data.classrooms.length === 0 ? <Card><AppText variant="caption">Sem dados no período.</AppText></Card> : null}
-          </View>
+          </SectionCard>
 
-          <SectionTitle title="Atalhos" />
-          <View style={{ borderRadius: 14, overflow: 'hidden' }}>
-            <ListItem icon="alert-circle-outline" title="Faltas recorrentes" onPress={() => router.push('/coordinator/alerts')} />
-            <ListItem icon="clipboard-outline" title="Acompanhamento pedagógico" onPress={() => router.push('/coordinator/followups')} />
-            <ListItem icon="document-text-outline" title="Relatórios" onPress={() => router.push('/reports')} />
-            <ListItem icon="megaphone-outline" title="Novo comunicado" onPress={() => router.push('/announcement/new')} />
-          </View>
         </>
       )}
     </Screen>

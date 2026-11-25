@@ -1,24 +1,22 @@
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
 import { useEffect } from 'react';
-import { View } from 'react-native';
 import { addDays, formatDateBR, todayIso } from '@/core/dates';
 import { markFirstScreen } from '@/core/perf';
 import { communicationRepository } from '@/data/repositories/communicationRepository';
 import { familyRepository } from '@/data/repositories/familyRepository';
 import { managementRepository } from '@/data/repositories/managementRepository';
-import { useSchoolContext, useSessionStore, useUserId } from '@/features/auth/sessionStore';
+import { useSchoolContext, useUserId } from '@/features/auth/sessionStore';
+import { DateBadge, ProfileCard, QuickActions, SectionCard, SectionRow } from '@/features/home/homeComponents';
 import { StudentAttendanceView } from '@/features/students/StudentAttendanceView';
-import { ListItem, Screen } from '@/ui/components/layout';
-import { AppText, Button, Card, SectionTitle } from '@/ui/components/primitives';
+import { Screen } from '@/ui/components/layout';
+import { Badge } from '@/ui/components/primitives';
 import { EmptyState, ErrorState, LoadingState } from '@/ui/components/states';
-import { spacing } from '@/ui/theme';
 
 export default function StudentDashboard() {
   const ctx = useSchoolContext();
   const userId = useUserId();
   const router = useRouter();
-  const name = useSessionStore((s) => s.profile?.fullName?.split(' ')[0] ?? '');
   const today = todayIso(ctx.timezone);
   const me = useQuery({ queryKey: ['family', userId, ctx.schoolId], queryFn: () => familyRepository.myStudents(userId, ctx.schoolId) });
   const announcements = useQuery({
@@ -40,32 +38,30 @@ export default function StudentDashboard() {
 
   return (
     <Screen onRefresh={() => void Promise.all([me.refetch(), announcements.refetch(), events.refetch()])}>
-      <AppText variant="title">{`Olá, ${name}!`}</AppText>
-      {student ? (
-        <AppText variant="caption" style={{ marginBottom: spacing.md }}>
-          {`${student.classroomName ?? ''} · Matrícula ${student.registrationCode}`}
-        </AppText>
-      ) : null}
+      <ProfileCard subtitle={student ? `${student.classroomName ?? ''} · Matrícula ${student.registrationCode}` : undefined} />
+      <QuickActions actions={[
+        { icon: 'checkmark-done-outline', label: 'Minha frequência', onPress: () => router.push('/student/history') },
+        { icon: 'megaphone-outline', label: 'Comunicados', onPress: () => router.push('/student/announcements') },
+        { icon: 'calendar-outline', label: 'Calendário', onPress: () => router.push('/student/calendar') },
+      ]} />
       {!student ? (
         <EmptyState title="Cadastro de estudante não encontrado" message="Procure a secretaria da escola." />
       ) : (
         <StudentAttendanceView studentId={student.id} schoolId={ctx.schoolId} timezone={ctx.timezone} compact />
       )}
-      <SectionTitle title="Comunicados" action={<Button title="Ver todos" compact variant="ghost" onPress={() => router.push('/student/announcements')} />} />
-      <View style={{ borderRadius: 14, overflow: 'hidden' }}>
-        {(announcements.data ?? []).slice(0, 3).map((a) => (
-          <ListItem key={a.id} icon="megaphone-outline" title={a.title} subtitle={formatDateBR(a.publishedAt)}
+      <SectionCard title="Comunicados" icon="megaphone-outline" count={announcements.data?.length}
+        action={{ label: 'Ver todos', onPress: () => router.push('/student/announcements') }} empty="Nenhum comunicado.">
+        {(announcements.data ?? []).slice(0, 6).map((a) => (
+          <SectionRow key={a.id} title={a.title} subtitle={formatDateBR(a.publishedAt)}
+            right={!a.readAt ? <Badge label="Novo" tone="info" /> : undefined}
             onPress={() => router.push(`/announcement/${a.id}`)} />
         ))}
-        {announcements.data?.length === 0 ? <Card><AppText variant="caption">Nenhum comunicado.</AppText></Card> : null}
-      </View>
-      <SectionTitle title="Próximos eventos" />
-      <View style={{ borderRadius: 14, overflow: 'hidden' }}>
-        {(events.data ?? []).slice(0, 4).map((e) => (
-          <ListItem key={e.id} icon="calendar-outline" title={e.title} subtitle={formatDateBR(e.eventDate)} />
+      </SectionCard>
+      <SectionCard title="Próximos eventos" icon="calendar-outline" count={events.data?.length} empty="Nenhum evento nos próximos 30 dias.">
+        {(events.data ?? []).map((e) => (
+          <SectionRow key={e.id} leading={<DateBadge iso={e.eventDate} />} title={e.title} subtitle={e.description ?? undefined} />
         ))}
-        {events.data?.length === 0 ? <Card><AppText variant="caption">Nenhum evento nos próximos 30 dias.</AppText></Card> : null}
-      </View>
+      </SectionCard>
     </Screen>
   );
 }
