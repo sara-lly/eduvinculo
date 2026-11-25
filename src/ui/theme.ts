@@ -1,5 +1,5 @@
 /**
- * Identidade visual do EduVínculo.
+ * Identidade visual do Presença+.
  * Azul-escuro (marca), azul-claro (apoio), verde (estados positivos).
  * Contrastes verificados para texto sobre fundo claro (WCAG AA).
  */

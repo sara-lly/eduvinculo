@@ -1,4 +1,4 @@
-# Proteção de dados (LGPD) — EduVínculo
+# Proteção de dados (LGPD) — Presença+
 
 O sistema trata dados pessoais de crianças e adolescentes. Princípios aplicados (LGPD, arts. 6º e 14):
 finalidade, necessidade (minimização), segurança, prevenção, transparência e melhor interesse.

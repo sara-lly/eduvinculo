@@ -1,4 +1,4 @@
-# Relatório de desempenho e profiling — EduVínculo
+# Relatório de desempenho e profiling — Presença+
 
 > **Regra deste documento:** somente números **realmente medidos** aparecem como resultado.
 > O que ainda precisa ser medido no celular está marcado como **[medir no aparelho]**, com o

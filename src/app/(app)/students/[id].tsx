@@ -49,7 +49,7 @@ export default function StudentDetail() {
         label: kind === 'student' ? student.data?.fullName : undefined, validDays: 7,
       });
       Alert.alert('Código de convite gerado', `${r.code}\n\nVálido por 7 dias e para um único uso. Entregue este código pessoalmente. Ele não será exibido novamente.`, [
-        { text: 'Compartilhar', onPress: () => void Share.share({ message: `Código de convite EduVínculo (${ctx.schoolName}): ${r.code}` }) },
+        { text: 'Compartilhar', onPress: () => void Share.share({ message: `Código de convite Presença+ (${ctx.schoolName}): ${r.code}` }) },
         { text: 'OK' },
       ]);
       void qc.invalidateQueries({ queryKey: ['invites'] });

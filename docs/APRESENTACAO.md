@@ -6,7 +6,7 @@
 
 ## Parte 1 — Introdução e contexto (1 min)
 
-* **EduVínculo — "Escola, família e estudante conectados."** Integrantes: _[preencher nomes]_.
+* **Presença+ — "Escola, família e estudante conectados."** Integrantes: _[preencher nomes]_.
 * **Problema:** faltas frequentes passam despercebidas quando a escola não acompanha a frequência
   nem fala com a família; isso esconde dificuldades de aprendizagem, problemas familiares,
   desmotivação e risco de abandono.

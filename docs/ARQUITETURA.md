@@ -1,4 +1,4 @@
-# Arquitetura do EduVínculo
+# Arquitetura do Presença+
 
 ## Visão geral
 

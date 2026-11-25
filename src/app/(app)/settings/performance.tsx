@@ -30,7 +30,7 @@ export default function PerformanceScreen() {
 
   const share = () => {
     const lines = summary.map((m) => `${LABELS[m.name] ?? m.name}: mediana ${m.median} ${m.unit}, p90 ${m.p90} ${m.unit} (n=${m.count}, min ${m.min}, máx ${m.max})`);
-    void Share.share({ message: [`EduVínculo — métricas medidas em ${deviceDescription()}`, `Build: ${__DEV__ ? 'desenvolvimento (Metro)' : 'produção'}`, ...lines].join('\n') });
+    void Share.share({ message: [`Presença+ — métricas medidas em ${deviceDescription()}`, `Build: ${__DEV__ ? 'desenvolvimento (Metro)' : 'produção'}`, ...lines].join('\n') });
   };
 
   return (

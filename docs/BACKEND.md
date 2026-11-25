@@ -49,7 +49,7 @@ npx supabase db push --include-seed
   **Authentication › Email Templates › Reset Password**, inclua o código no corpo:
 
 ```html
-<h2>Redefinir senha — EduVínculo</h2>
+<h2>Redefinir senha — Presença+</h2>
 <p>Use este código no aplicativo: <strong>{{ .Token }}</strong></p>
 <p>Se você não pediu a redefinição, ignore este e-mail.</p>
 ```

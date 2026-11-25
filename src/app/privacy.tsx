@@ -5,7 +5,7 @@ import { spacing } from '@/ui/theme';
 const SECTIONS: { title: string; body: string }[] = [
   {
     title: 'Quem somos',
-    body: 'O EduVínculo é uma plataforma de acompanhamento escolar que conecta escola, família e estudante. A escola é a controladora dos dados; a plataforma atua como operadora, tratando os dados somente conforme as instruções da escola (LGPD, Lei nº 13.709/2018).',
+    body: 'O Presença+ é uma plataforma de acompanhamento escolar que conecta escola, família e estudante. A escola é a controladora dos dados; a plataforma atua como operadora, tratando os dados somente conforme as instruções da escola (LGPD, Lei nº 13.709/2018).',
   },
   {
     title: 'Dados coletados e finalidades',
@@ -38,7 +38,7 @@ export default function PrivacyScreen() {
           <AppText>{s.body}</AppText>
         </AppText>
       ))}
-      <AppText variant="caption">Versão 1.0 — documento de demonstração do projeto acadêmico EduVínculo.</AppText>
+      <AppText variant="caption">Versão 1.0 — documento de demonstração do projeto acadêmico Presença+.</AppText>
     </Screen>
   );
 }

@@ -1,4 +1,4 @@
-/** Entidades de domínio do EduVínculo (espelham o banco, em camelCase). */
+/** Entidades de domínio do Presença+ (espelham o banco, em camelCase). */
 import type { IsoDate } from '@/core/dates';
 
 export type MembershipRole = 'director' | 'coordinator' | 'teacher' | 'guardian' | 'student';

@@ -48,7 +48,7 @@ export default function GuardianFormScreen() {
     try {
       const r = await managementRepository.createInvite({ schoolId: ctx.schoolId, role: 'guardian', guardianId, validDays: 7 });
       Alert.alert('Convite gerado', `${r.code}\n\nVálido por 7 dias, uso único. Entregue ao responsável. O código não será exibido novamente.`, [
-        { text: 'Compartilhar', onPress: () => void Share.share({ message: `Seu código de acesso ao EduVínculo (${ctx.schoolName}): ${r.code}` }) },
+        { text: 'Compartilhar', onPress: () => void Share.share({ message: `Seu código de acesso ao Presença+ (${ctx.schoolName}): ${r.code}` }) },
         { text: 'OK' },
       ]);
     } catch (e) {

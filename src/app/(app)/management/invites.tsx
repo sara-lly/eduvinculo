@@ -34,7 +34,7 @@ export default function InvitesScreen() {
       setLabel('');
       void qc.invalidateQueries({ queryKey: ['invites'] });
       Alert.alert('Convite de professor', `${r.code}\n\nVálido por 7 dias, até ${uses} uso(s). Ele não será exibido novamente.`, [
-        { text: 'Compartilhar', onPress: () => void Share.share({ message: `Código de acesso de professor ao EduVínculo (${ctx.schoolName}): ${r.code}` }) },
+        { text: 'Compartilhar', onPress: () => void Share.share({ message: `Código de acesso de professor ao Presença+ (${ctx.schoolName}): ${r.code}` }) },
         { text: 'OK' },
       ]);
     } catch (e) {

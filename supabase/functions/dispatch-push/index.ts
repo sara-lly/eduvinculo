@@ -71,7 +71,7 @@ Deno.serve(async (req) => {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json', 'Accept-Encoding': 'gzip' },
         body: JSON.stringify(userTokens.map((to) => ({
           to,
-          title: 'EduVínculo',
+          title: 'Presença+',
           body: 'Você tem uma nova notificação da escola. Abra o app para ver.',
           sound: null,
           channelId: 'default',

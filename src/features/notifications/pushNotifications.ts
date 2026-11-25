@@ -13,7 +13,7 @@ import { Platform } from 'react-native';
 import { config } from '@/core/config';
 import { communicationRepository } from '@/data/repositories/communicationRepository';
 
-export const GENERIC_TITLE = 'EduVínculo';
+export const GENERIC_TITLE = 'Presença+';
 export const GENERIC_BODY = 'Você tem uma nova notificação da escola. Abra o app para ver.';
 
 let configured = false;

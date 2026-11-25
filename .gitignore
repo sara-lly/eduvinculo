@@ -40,7 +40,7 @@ yarn-error.*
 /ios
 /android
 
-# EduVínculo
+# Presença+
 .env
 .env.local
 *.keystore

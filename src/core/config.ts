@@ -18,6 +18,6 @@ export const config = {
   localHistoryDays: 60,
   /** Fuso horário padrão (Brasília). */
   defaultTimezone: 'America/Sao_Paulo',
-  appName: 'EduVínculo',
+  appName: 'Presença+',
   slogan: 'Escola, família e estudante conectados.',
 } as const;
