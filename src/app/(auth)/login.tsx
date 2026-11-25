@@ -12,7 +12,7 @@ import { Brand } from '@/ui/components/brand';
 import { FormTextField } from '@/ui/components/forms';
 import { AppText, Button } from '@/ui/components/primitives';
 import { InlineMessage } from '@/ui/components/states';
-import { colors, spacing } from '@/ui/theme';
+import { colors, radius, shadow, spacing } from '@/ui/theme';
 
 export default function LoginScreen() {
   const online = useIsOnline();
@@ -37,8 +37,11 @@ export default function LoginScreen() {
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
-          <Brand />
+          <View style={styles.hero}>
+            <Brand />
+          </View>
           <View style={styles.form}>
+            <AppText variant="subtitle" style={{ marginBottom: spacing.xs }}>Entrar na sua conta</AppText>
             {!online ? <InlineMessage tone="warning" text="Você está offline. É preciso internet para entrar pela primeira vez." /> : null}
             {error ? <InlineMessage tone="danger" text={error} /> : null}
             <FormTextField
@@ -81,6 +84,7 @@ export default function LoginScreen() {
 
 const styles = StyleSheet.create({
   container: { flexGrow: 1, justifyContent: 'center', padding: spacing.xl, gap: spacing.xl },
-  form: { gap: spacing.sm },
+  hero: { backgroundColor: colors.primaryLight, borderRadius: radius.xl, paddingVertical: spacing.xxl, paddingHorizontal: spacing.lg },
+  form: { gap: spacing.sm, backgroundColor: colors.surface, borderRadius: radius.xl, padding: spacing.xl, borderWidth: 1, borderColor: colors.border, ...shadow },
   footer: { alignItems: 'stretch', gap: spacing.sm },
 });

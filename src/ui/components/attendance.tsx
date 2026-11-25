@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
   },
   statusGroup: { flexDirection: 'row', gap: 6 },
   statusButton: {
-    width: MIN_TOUCH - 4, height: MIN_TOUCH - 4, borderRadius: radius.md, borderWidth: 1.5, alignItems: 'center', justifyContent: 'center',
+    width: MIN_TOUCH - 2, height: MIN_TOUCH - 2, borderRadius: radius.pill, borderWidth: 1.5, alignItems: 'center', justifyContent: 'center',
   },
   legend: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md, paddingVertical: spacing.sm },
   legendDot: { width: 10, height: 10, borderRadius: 5 },

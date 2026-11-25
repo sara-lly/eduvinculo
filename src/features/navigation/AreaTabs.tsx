@@ -12,7 +12,7 @@ import { useSessionStore } from '@/features/auth/sessionStore';
 import { useUnreadNotifications } from '@/features/bootstrap';
 import { useIsOnline, useSyncStatus } from '@/features/sync/hooks';
 import { SyncPill } from '@/ui/components/states';
-import { colors } from '@/ui/theme';
+import { colors, fonts } from '@/ui/theme';
 
 export interface TabDef {
   name: string;
@@ -45,11 +45,15 @@ export function AreaTabs({ area, tabs }: { area: Area; tabs: TabDef[] }) {
     <Tabs
       screenOptions={{
         headerTitle,
-        headerTitleStyle: { fontSize: 16, color: colors.text, fontWeight: '700' },
+        headerTitleStyle: { fontSize: 18, color: colors.primary, fontFamily: fonts.brand },
+        headerStyle: { backgroundColor: colors.background },
+        headerShadowVisible: false,
         headerRight: () => <HeaderSync />,
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.textMuted,
-        tabBarLabelStyle: { fontSize: 11, fontWeight: '600' },
+        tabBarLabelStyle: { fontSize: 11, fontFamily: fonts.bold },
+        tabBarStyle: { backgroundColor: colors.surface, borderTopColor: colors.border, height: 64, paddingTop: 6 },
+        sceneStyle: { backgroundColor: colors.background },
         // Telas de abas não visitadas não são montadas (economia de memória).
         lazy: true,
       }}

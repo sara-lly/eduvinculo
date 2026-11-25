@@ -2,7 +2,7 @@
 import { forwardRef, type ComponentRef, type ReactNode } from 'react';
 import { Controller, type Control, type FieldPath, type FieldValues } from 'react-hook-form';
 import { Pressable, StyleSheet, Switch, TextInput, View, type TextInputProps } from 'react-native';
-import { colors, MIN_TOUCH, radius, spacing } from '../theme';
+import { colors, fonts, MIN_TOUCH, radius, spacing } from '../theme';
 import { AppText } from './primitives';
 
 export interface TextFieldProps extends TextInputProps {
@@ -145,9 +145,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.border,
     borderRadius: radius.md,
-    paddingHorizontal: spacing.md,
+    paddingHorizontal: spacing.lg,
     backgroundColor: colors.surface,
     fontSize: 16,
+    fontFamily: fonts.regular,
     color: colors.text,
   },
   multiline: { minHeight: 96, paddingTop: spacing.md, textAlignVertical: 'top' },
@@ -156,8 +157,8 @@ const styles = StyleSheet.create({
   switchRow: { flexDirection: 'row', alignItems: 'center', paddingVertical: spacing.sm, gap: spacing.md, minHeight: MIN_TOUCH },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   chip: {
-    borderWidth: 1.5, borderColor: colors.primary, borderRadius: radius.pill, paddingHorizontal: 14,
-    minHeight: 38, justifyContent: 'center',
+    borderWidth: 1.5, borderColor: colors.primaryLight, backgroundColor: colors.primarySoft, borderRadius: radius.pill, paddingHorizontal: 16,
+    minHeight: 40, justifyContent: 'center',
   },
-  chipSelected: { backgroundColor: colors.primary },
+  chipSelected: { backgroundColor: colors.primary, borderColor: colors.primary },
 });

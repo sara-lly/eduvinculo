@@ -3,7 +3,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { memo, type ComponentProps, type ReactNode } from 'react';
 import { Pressable, RefreshControl, ScrollView, StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { colors, MIN_TOUCH, radius, spacing } from '../theme';
+import { colors, fonts, MIN_TOUCH, radius, shadow, spacing } from '../theme';
 import { AppText } from './primitives';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
@@ -62,7 +62,7 @@ export function StatTile({ label, value, hint, tone = 'primary', icon }: {
         {icon ? <Ionicons name={icon} size={16} color={fg} /> : null}
         <AppText variant="caption" numberOfLines={1} style={{ flex: 1 }}>{label}</AppText>
       </View>
-      <AppText style={{ fontSize: 24, fontWeight: '800', color: fg, marginTop: 4 }}>{value}</AppText>
+      <AppText style={{ fontSize: 28, fontFamily: fonts.brand, color: fg, marginTop: 4 }}>{value}</AppText>
       {hint ? <AppText variant="caption" numberOfLines={2}>{hint}</AppText> : null}
     </View>
   );
@@ -129,12 +129,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row', alignItems: 'center', gap: spacing.md, paddingVertical: spacing.md, paddingHorizontal: spacing.lg,
     backgroundColor: colors.surface, minHeight: MIN_TOUCH + 12, borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: colors.border,
   },
-  itemIcon: { width: 36, height: 36, borderRadius: 18, backgroundColor: colors.primaryLight, alignItems: 'center', justifyContent: 'center' },
+  itemIcon: { width: 40, height: 40, borderRadius: 14, backgroundColor: colors.primaryLight, alignItems: 'center', justifyContent: 'center' },
   tile: {
-    flexGrow: 1, flexBasis: '45%', backgroundColor: colors.surface, borderRadius: radius.lg, padding: spacing.md,
-    borderWidth: StyleSheet.hairlineWidth, borderColor: colors.border,
+    flexGrow: 1, flexBasis: '45%', backgroundColor: colors.surface, borderRadius: radius.lg, padding: spacing.lg,
+    borderWidth: 1, borderColor: colors.border, ...shadow,
   },
-  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
+  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
   progressTrack: { height: 8, borderRadius: 4, backgroundColor: '#E2E8F0', overflow: 'hidden' },
   progressFill: { height: 8, borderRadius: 4 },
   chart: { flexDirection: 'row', alignItems: 'flex-end', gap: 3, borderBottomWidth: 1, borderBottomColor: colors.border },
@@ -142,6 +142,6 @@ const styles = StyleSheet.create({
   bar: { borderTopLeftRadius: 3, borderTopRightRadius: 3 },
   threshold: { position: 'absolute', left: 0, right: 0, height: 1, borderTopWidth: 1, borderStyle: 'dashed', borderColor: colors.danger },
   chartLabels: { flexDirection: 'row', gap: 3, marginTop: 4 },
-  chartLabel: { flex: 1, fontSize: 10, color: colors.textMuted, textAlign: 'center' },
+  chartLabel: { flex: 1, fontSize: 10, color: colors.textMuted, textAlign: 'center', fontFamily: fonts.regular },
   headerButton: { padding: 6, minWidth: MIN_TOUCH, minHeight: MIN_TOUCH, alignItems: 'center', justifyContent: 'center' },
 });
