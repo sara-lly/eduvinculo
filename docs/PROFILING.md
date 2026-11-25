@@ -91,7 +91,7 @@ Estas medições dependem de um celular Android e **não foram executadas** nest
    `npx eas-cli@latest build --platform android --profile preview` e instale o APK.
 2. Use **o mesmo aparelho**, carregado acima de 50%, modo avião **desligado**, Wi-Fi estável,
    sem outros apps abertos. Anote modelo, Android e RAM (aparecem na tela Desempenho).
-3. Entre como `professora@eduvinculo.demo` (turmas de 30, 100 e 500 estudantes no seed).
+3. Entre como `professora@presenca.demo` (turmas de 30, 100 e 500 estudantes no seed).
 4. **Laboratório de listas** (Mais › Desempenho › Abrir laboratório): para 30, 100 e 500,
    rode ANTES e DEPOIS, tocando em "Medir marcações" e "Medir rolagem" **3 vezes cada**.
 5. **Fluxo real:** abra a chamada das três turmas, marque e conclua. Repita 3 vezes.

@@ -12,8 +12,8 @@ import {
 describe('validação de formulários', () => {
   it('login exige e-mail válido e senha', () => {
     expect(loginSchema.safeParse({ email: 'x', password: '' }).success).toBe(false);
-    const ok = loginSchema.safeParse({ email: '  Professora@EduVinculo.demo ', password: 'Demo@2026' });
-    expect(ok.success && ok.data.email).toBe('professora@eduvinculo.demo');
+    const ok = loginSchema.safeParse({ email: '  Professora@Presenca.demo ', password: 'Demo@2026' });
+    expect(ok.success && ok.data.email).toBe('professora@presenca.demo');
   });
 
   it('cadastro exige senha forte, confirmação e aceite da política', () => {

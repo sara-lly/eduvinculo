@@ -49,10 +49,10 @@ describe('Formulário com validação', () => {
     expect(screen.getByText('Informe a senha.')).toBeTruthy();
     expect(onValid).not.toHaveBeenCalled();
 
-    await fireEvent.changeText(screen.getByLabelText('E-mail'), 'professora@eduvinculo.demo');
+    await fireEvent.changeText(screen.getByLabelText('E-mail'), 'professora@presenca.demo');
     await fireEvent.changeText(screen.getByLabelText('Senha'), 'Demo@2026');
     await fireEvent.press(screen.getByLabelText('Entrar'));
-    await waitFor(() => expect(onValid).toHaveBeenCalledWith({ email: 'professora@eduvinculo.demo', password: 'Demo@2026' }, undefined));
+    await waitFor(() => expect(onValid).toHaveBeenCalledWith({ email: 'professora@presenca.demo', password: 'Demo@2026' }, undefined));
   });
 });
 

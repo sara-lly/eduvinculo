@@ -1,4 +1,4 @@
-import { createClient, processLock, type SupabaseClient } from '@supabase/supabase-js';
+import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { AppState, type AppStateStatus } from 'react-native';
 import { config } from '@/core/config';
 import { AppError, toAppError } from '@/core/errors';
@@ -17,7 +17,6 @@ export const supabase: SupabaseClient = createClient(
       autoRefreshToken: true,
       persistSession: true,
       detectSessionInUrl: false,
-      lock: processLock,
     },
     global: { headers: { 'x-client-info': 'presencaplus-mobile' } },
   },

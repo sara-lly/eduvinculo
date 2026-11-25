@@ -101,14 +101,14 @@ Todas fictícias, com senha **`Demo@2026`**. O domínio `.demo` não recebe e-ma
 
 | Perfil | E-mail | Escola |
 |---|---|---|
-| Administração da plataforma | `admin@eduvinculo.demo` | — |
-| Coordenação | `coordenacao@eduvinculo.demo` | Escola Municipal Vínculo do Saber (Teresina-PI) |
-| Direção | `direcao@eduvinculo.demo` | Escola Municipal Vínculo do Saber |
-| Professora (6º A, turmas de teste 100 e 500) | `professora@eduvinculo.demo` | Escola Municipal Vínculo do Saber |
-| Professor (8º C) | `professor@eduvinculo.demo` | Escola Municipal Vínculo do Saber |
-| Responsável (mãe de Lucas e Ana Clara) | `responsavel@eduvinculo.demo` | Escola Municipal Vínculo do Saber |
-| Estudante (Lucas) | `estudante@eduvinculo.demo` | Escola Municipal Vínculo do Saber |
-| Coordenação de outra escola (teste de isolamento) | `coordenacao2@eduvinculo.demo` | Escola Estadual Horizonte Azul |
+| Administração da plataforma | `admin@presenca.demo` | — |
+| Coordenação | `coordenacao@presenca.demo` | Escola Municipal Vínculo do Saber (Teresina-PI) |
+| Direção | `direcao@presenca.demo` | Escola Municipal Vínculo do Saber |
+| Professora (6º A, turmas de teste 100 e 500) | `professora@presenca.demo` | Escola Municipal Vínculo do Saber |
+| Professor (8º C) | `professor@presenca.demo` | Escola Municipal Vínculo do Saber |
+| Responsável (mãe de Lucas e Ana Clara) | `responsavel@presenca.demo` | Escola Municipal Vínculo do Saber |
+| Estudante (Lucas) | `estudante@presenca.demo` | Escola Municipal Vínculo do Saber |
+| Coordenação de outra escola (teste de isolamento) | `coordenacao2@presenca.demo` | Escola Estadual Horizonte Azul |
 
 **Códigos de convite de demonstração** (para testar o primeiro acesso com uma conta nova):
 
@@ -133,7 +133,7 @@ de **hoje** fica pendente de propósito, para a demonstração.
 * **Estudante:** Início/Frequência/Calendário com os próprios dados.
 * **Coordenação:** Painel, Faltas (alertas com motivos), Acompanhamento, Gestão (turmas, estudantes,
   convites, regras), Relatórios (exportação CSV) e Conflitos.
-* **Isolamento entre escolas:** `coordenacao2@eduvinculo.demo` não vê nada da escola 1.
+* **Isolamento entre escolas:** `coordenacao2@presenca.demo` não vê nada da escola 1.
 * **Administração:** escolas com contagens, suspensão, convites de gestão e auditoria.
 
 ## Testes automatizados

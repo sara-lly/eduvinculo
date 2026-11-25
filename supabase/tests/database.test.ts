@@ -278,12 +278,12 @@ describe('Convites e primeiro acesso', () => {
       `select count(*)::int as n from invitations where code_hash = $1`, [invite.code]);
     assert.equal(stored.n, 0, 'o código em texto puro não pode ser armazenado');
 
-    await t.createUser(newTeacher, 'novo.professor@eduvinculo.demo', 'Novo Professor');
+    await t.createUser(newTeacher, 'novo.professor@presenca.demo', 'Novo Professor');
     const [{ r }] = await t.as<{ r: { role: string } }>(newTeacher, `select public.redeem_invite($1) as r`, [invite.code.toLowerCase()]);
     assert.equal(r.role, 'teacher');
 
     const other = randomUUID();
-    await t.createUser(other, 'outro@eduvinculo.demo', 'Outro');
+    await t.createUser(other, 'outro@presenca.demo', 'Outro');
     await assert.rejects(t.as(other, `select public.redeem_invite($1)`, [invite.code]), /inválido ou expirado/);
   });
 
@@ -293,7 +293,7 @@ describe('Convites e primeiro acesso', () => {
   });
 
   it('convite de responsável vincula a conta ao cadastro correto', async () => {
-    await t.createUser(newGuardian, 'jose@eduvinculo.demo', 'José');
+    await t.createUser(newGuardian, 'jose@presenca.demo', 'José');
     assert.equal(await count(newGuardian, 'students'), 0);
     await t.as(newGuardian, `select public.redeem_invite('DEMO-RESP-2026')`);
     const rows = await t.as<{ id: string }>(newGuardian, 'select id from public.students');

@@ -15,14 +15,14 @@ declare
 begin
   for u in
     select * from (values
-      ('00000000-0000-4000-a000-000000000001'::uuid, 'admin@eduvinculo.demo',        'Administração EduVínculo'),
-      ('00000000-0000-4000-a000-000000000002'::uuid, 'coordenacao@eduvinculo.demo',  'Helena Prado (Coordenação)'),
-      ('00000000-0000-4000-a000-000000000003'::uuid, 'direcao@eduvinculo.demo',      'Roberto Antunes (Direção)'),
-      ('00000000-0000-4000-a000-000000000004'::uuid, 'professora@eduvinculo.demo',   'Marina Duarte'),
-      ('00000000-0000-4000-a000-000000000005'::uuid, 'professor@eduvinculo.demo',    'Caio Ribeiro'),
-      ('00000000-0000-4000-a000-000000000006'::uuid, 'responsavel@eduvinculo.demo',  'Rita Moura'),
-      ('00000000-0000-4000-a000-000000000007'::uuid, 'estudante@eduvinculo.demo',    'Lucas Moura'),
-      ('00000000-0000-4000-a000-000000000009'::uuid, 'coordenacao2@eduvinculo.demo', 'Sônia Freitas (Coordenação)')
+      ('00000000-0000-4000-a000-000000000001'::uuid, 'admin@presenca.demo',        'Administração EduVínculo'),
+      ('00000000-0000-4000-a000-000000000002'::uuid, 'coordenacao@presenca.demo',  'Helena Prado (Coordenação)'),
+      ('00000000-0000-4000-a000-000000000003'::uuid, 'direcao@presenca.demo',      'Roberto Antunes (Direção)'),
+      ('00000000-0000-4000-a000-000000000004'::uuid, 'professora@presenca.demo',   'Marina Duarte'),
+      ('00000000-0000-4000-a000-000000000005'::uuid, 'professor@presenca.demo',    'Caio Ribeiro'),
+      ('00000000-0000-4000-a000-000000000006'::uuid, 'responsavel@presenca.demo',  'Rita Moura'),
+      ('00000000-0000-4000-a000-000000000007'::uuid, 'estudante@presenca.demo',    'Lucas Moura'),
+      ('00000000-0000-4000-a000-000000000009'::uuid, 'coordenacao2@presenca.demo', 'Sônia Freitas (Coordenação)')
     ) as t(id, email, full_name)
   loop
     insert into auth.users (
@@ -146,8 +146,8 @@ insert into public.classroom_students (classroom_id, student_id, start_date) val
 -- Responsáveis
 -- -----------------------------------------------------------------------------
 insert into public.guardians (id, school_id, full_name, email, phone, user_id) values
-  ('40000000-0000-4000-a000-000000000001', '10000000-0000-4000-a000-000000000001', 'Rita Moura', 'responsavel@eduvinculo.demo', '(86) 90000-0006', '00000000-0000-4000-a000-000000000006'),
-  ('40000000-0000-4000-a000-000000000002', '10000000-0000-4000-a000-000000000001', 'José Moura Teixeira', 'jose.moura@eduvinculo.demo', '(86) 90000-0008', null);
+  ('40000000-0000-4000-a000-000000000001', '10000000-0000-4000-a000-000000000001', 'Rita Moura', 'responsavel@presenca.demo', '(86) 90000-0006', '00000000-0000-4000-a000-000000000006'),
+  ('40000000-0000-4000-a000-000000000002', '10000000-0000-4000-a000-000000000001', 'José Moura Teixeira', 'jose.moura@presenca.demo', '(86) 90000-0008', null);
 
 insert into public.student_guardians (student_id, guardian_id, relationship) values
   ('30000000-0000-4000-a000-000000000001', '40000000-0000-4000-a000-000000000001', 'mãe'),

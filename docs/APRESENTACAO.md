@@ -24,14 +24,14 @@
 
 ## Parte 3 — Demonstração "caminho feliz" (2 min)
 
-1. Login `professora@eduvinculo.demo` → painel: chamadas pendentes, próximas aulas, alertas.
+1. Login `professora@presenca.demo` → painel: chamadas pendentes, próximas aulas, alertas.
 2. Turmas › **6º Ano A** › Chamada: marcar presenças/faltas (mostrar fluidez), "Restantes: presente",
    **Concluir** → confirmação com resumo.
 3. **Sem internet:** ativar modo avião → abrir a **Turma de Teste — 500** → registrar e concluir →
    selo "Pendente (offline)" → desativar modo avião → selo muda para "Sincronizada".
 4. Faltas recorrentes: aba da turma mostra Lucas com "2 faltas consecutivas".
-5. Login `responsavel@eduvinculo.demo` → notificação de falta e comunicado com confirmação de ciência.
-6. Login `coordenacao@eduvinculo.demo` → painel (frequência média, turmas com mais faltas, evolução),
+5. Login `responsavel@presenca.demo` → notificação de falta e comunicado com confirmação de ciência.
+6. Login `coordenacao@presenca.demo` → painel (frequência média, turmas com mais faltas, evolução),
    **Faltas** › registrar acompanhamento.
 
 ## Parte 4 — Mergulho técnico (3,5 min) — escolher 3
@@ -72,8 +72,8 @@ Mostrar as tabelas de `docs/PROFILING.md`:
 
 | Perfil | E-mail | Senha |
 |---|---|---|
-| Professora | professora@eduvinculo.demo | Demo@2026 |
-| Responsável | responsavel@eduvinculo.demo | Demo@2026 |
-| Coordenação | coordenacao@eduvinculo.demo | Demo@2026 |
-| Estudante | estudante@eduvinculo.demo | Demo@2026 |
-| Administração | admin@eduvinculo.demo | Demo@2026 |
+| Professora | professora@presenca.demo | Demo@2026 |
+| Responsável | responsavel@presenca.demo | Demo@2026 |
+| Coordenação | coordenacao@presenca.demo | Demo@2026 |
+| Estudante | estudante@presenca.demo | Demo@2026 |
+| Administração | admin@presenca.demo | Demo@2026 |
