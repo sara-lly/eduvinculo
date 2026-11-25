@@ -1,5 +1,5 @@
 -- =============================================================================
--- EduVínculo — 0003: comunicados, notificações e auditoria
+-- Presença+ — 0003: comunicados, notificações e auditoria
 -- =============================================================================
 
 create type public.notification_type as enum ('absence', 'recurrent_absence', 'announcement', 'followup', 'system');

@@ -1,5 +1,5 @@
 -- =============================================================================
--- EduVínculo — 0006: otimização de desempenho das políticas RLS
+-- Presença+ — 0006: otimização de desempenho das políticas RLS
 -- -----------------------------------------------------------------------------
 -- Problema medido (scripts/benchmark-db.ts): nas políticas originais, funções
 -- como can_view_student(id) eram executadas UMA VEZ POR LINHA. Uma responsável

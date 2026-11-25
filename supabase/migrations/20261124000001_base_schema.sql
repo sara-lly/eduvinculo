@@ -1,5 +1,5 @@
 -- =============================================================================
--- EduVínculo — 0001: tipos, utilitários e cadastro escolar
+-- Presença+ — 0001: tipos, utilitários e cadastro escolar
 -- =============================================================================
 -- Convenções:
 --   * Toda tabela possui id (uuid), created_at e updated_at.

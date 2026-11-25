@@ -19,7 +19,7 @@ export const supabase: SupabaseClient = createClient(
       detectSessionInUrl: false,
       lock: processLock,
     },
-    global: { headers: { 'x-client-info': 'eduvinculo-mobile' } },
+    global: { headers: { 'x-client-info': 'presencaplus-mobile' } },
   },
 );
 

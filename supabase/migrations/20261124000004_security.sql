@@ -1,5 +1,5 @@
 -- =============================================================================
--- EduVínculo — 0004: autenticação, funções de autorização e Row Level Security
+-- Presença+ — 0004: autenticação, funções de autorização e Row Level Security
 -- =============================================================================
 -- Princípios:
 --   * Toda tabela de dados tem RLS habilitado. Sem política = acesso negado.

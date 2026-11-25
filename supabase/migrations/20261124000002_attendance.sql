@@ -1,5 +1,5 @@
 -- =============================================================================
--- EduVínculo — 0002: frequência, conflitos, acompanhamento pedagógico
+-- Presença+ — 0002: frequência, conflitos, acompanhamento pedagógico
 -- =============================================================================
 
 create type public.attendance_status as enum ('present', 'absent', 'late', 'justified');

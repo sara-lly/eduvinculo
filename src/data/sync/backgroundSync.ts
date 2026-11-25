@@ -8,7 +8,7 @@ import * as TaskManager from 'expo-task-manager';
 import { config } from '@/core/config';
 import { syncEngine } from './index';
 
-export const BACKGROUND_SYNC_TASK = 'eduvinculo-attendance-sync';
+export const BACKGROUND_SYNC_TASK = 'presencaplus-attendance-sync';
 
 // Deve ser definida no escopo global do módulo (exigência do TaskManager).
 TaskManager.defineTask(BACKGROUND_SYNC_TASK, async () => {

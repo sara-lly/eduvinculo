@@ -11,7 +11,7 @@ import { authRepository } from '@/data/repositories/authRepository';
 import { availableContexts, contextKey } from '@/domain/roles';
 import type { ActiveContext, Membership, Profile } from '@/domain/types';
 
-const ACTIVE_CONTEXT_KEY = 'eduvinculo.active_context';
+const ACTIVE_CONTEXT_KEY = 'presencaplus.active_context';
 
 export type AuthStatus = 'initializing' | 'signedOut' | 'loadingContext' | 'ready' | 'error';
 

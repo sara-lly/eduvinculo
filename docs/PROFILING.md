@@ -102,13 +102,13 @@ Estas medições dependem de um celular Android e **não foram executadas** nest
 ### 4.1 Android Studio Profiler (memória e CPU)
 
 1. Instale o APK, conecte o celular por USB com **Depuração USB** ativa.
-2. Android Studio › *View › Tool Windows › Profiler* › selecione `app.eduvinculo.mobile`.
+2. Android Studio › *View › Tool Windows › Profiler* › selecione `app.presencaplus.mobile`.
 3. **Memory:** abra o Laboratório com 500 estudantes; registre o pico de memória no modo ANTES
    e no modo DEPOIS (remontando a lista entre as medições). Faça um *heap dump* após sair da
    tela de chamada para verificar que as linhas foram liberadas.
 4. **CPU:** grave um *System Trace* durante "Medir rolagem" em cada modo.
-5. Tempo de inicialização a frio: `adb shell am force-stop app.eduvinculo.mobile` e
-   `adb shell am start -W -n app.eduvinculo.mobile/.MainActivity` (campo `TotalTime`), 5 vezes.
+5. Tempo de inicialização a frio: `adb shell am force-stop app.presencaplus.mobile` e
+   `adb shell am start -W -n app.presencaplus.mobile/.MainActivity` (campo `TotalTime`), 5 vezes.
 
 ### 4.2 React Native DevTools
 

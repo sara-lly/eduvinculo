@@ -1,18 +1,18 @@
 {
   "expo": {
     "name": "Presença+",
-    "slug": "eduvinculo",
+    "slug": "presenca-plus",
     "version": "1.0.0",
-    "scheme": "eduvinculo",
+    "scheme": "presencaplus",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "app.eduvinculo.mobile"
+      "bundleIdentifier": "app.presencaplus.mobile"
     },
     "android": {
-      "package": "app.eduvinculo.mobile",
+      "package": "app.presencaplus.mobile",
       "adaptiveIcon": {
         "backgroundColor": "#0B3D91",
         "foregroundImage": "./assets/android-icon-foreground.png",

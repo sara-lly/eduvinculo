@@ -62,7 +62,7 @@ function benchRoster() {
   console.log('\n## 2. Gravação da lista de estudantes no SQLite (arquivo em disco, mediana de 5 execuções)\n');
   console.log('| Estudantes | Antes — INSERT avulso (ms) | Depois — transação + prepared (ms) | Ganho |');
   console.log('|---:|---:|---:|---:|');
-  const dir = mkdtempSync(join(tmpdir(), 'eduvinculo-bench-'));
+  const dir = mkdtempSync(join(tmpdir(), 'presenca-bench-'));
   try {
     const db = new DatabaseSync(join(dir, 'bench.db'));
     db.exec('PRAGMA journal_mode = WAL; CREATE TABLE roster (classroom_id TEXT, student_id TEXT, full_name TEXT, registration_code TEXT, position INTEGER, PRIMARY KEY (classroom_id, student_id));');

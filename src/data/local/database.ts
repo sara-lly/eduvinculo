@@ -8,7 +8,7 @@ import * as SQLite from 'expo-sqlite';
 
 export type LocalDb = SQLite.SQLiteDatabase;
 
-const DB_NAME = 'eduvinculo.db';
+const DB_NAME = 'presencaplus.db';
 const SCHEMA_VERSION = 1;
 
 const MIGRATIONS: Record<number, string> = {

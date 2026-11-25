@@ -1,5 +1,5 @@
 -- =============================================================================
--- EduVínculo — dados de demonstração (100% fictícios)
+-- Presença+ — dados de demonstração (100% fictícios)
 -- -----------------------------------------------------------------------------
 -- Nenhum nome, e-mail ou documento pertence a pessoas reais. Os e-mails usam o
 -- domínio reservado ".demo", que não recebe mensagens.
