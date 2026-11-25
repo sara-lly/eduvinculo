@@ -73,11 +73,11 @@ insert into public.school_memberships (school_id, user_id, role) values
 -- Turmas
 -- -----------------------------------------------------------------------------
 insert into public.classrooms (id, school_id, name, grade, shift, school_year) values
-  ('20000000-0000-4000-a000-000000000001', '10000000-0000-4000-a000-000000000001', '6º Ano A', '6º ano', 'morning', extract(year from current_date)::int),
-  ('20000000-0000-4000-a000-000000000002', '10000000-0000-4000-a000-000000000001', '8º Ano C', '8º ano', 'afternoon', extract(year from current_date)::int),
-  ('20000000-0000-4000-a000-000000000003', '10000000-0000-4000-a000-000000000001', 'Turma de Teste — 100 estudantes', 'Benchmark', 'morning', extract(year from current_date)::int),
-  ('20000000-0000-4000-a000-000000000004', '10000000-0000-4000-a000-000000000001', 'Turma de Teste — 500 estudantes', 'Benchmark', 'morning', extract(year from current_date)::int),
-  ('20000000-0000-4000-a000-000000000005', '10000000-0000-4000-a000-000000000002', '9º Ano A', '9º ano', 'morning', extract(year from current_date)::int);
+  ('20000000-0000-4000-a000-000000000001', '10000000-0000-4000-a000-000000000001', '6º Ano A', '6º ano', 'morning', extract(year from (now() at time zone 'America/Fortaleza')::date)::int),
+  ('20000000-0000-4000-a000-000000000002', '10000000-0000-4000-a000-000000000001', '8º Ano C', '8º ano', 'afternoon', extract(year from (now() at time zone 'America/Fortaleza')::date)::int),
+  ('20000000-0000-4000-a000-000000000003', '10000000-0000-4000-a000-000000000001', 'Turma de Teste — 100 estudantes', 'Benchmark', 'morning', extract(year from (now() at time zone 'America/Fortaleza')::date)::int),
+  ('20000000-0000-4000-a000-000000000004', '10000000-0000-4000-a000-000000000001', 'Turma de Teste — 500 estudantes', 'Benchmark', 'morning', extract(year from (now() at time zone 'America/Fortaleza')::date)::int),
+  ('20000000-0000-4000-a000-000000000005', '10000000-0000-4000-a000-000000000002', '9º Ano A', '9º ano', 'morning', extract(year from (now() at time zone 'America/Fortaleza')::date)::int);
 
 insert into public.classroom_teachers (classroom_id, teacher_id, subject) values
   ('20000000-0000-4000-a000-000000000001', '00000000-0000-4000-a000-000000000004', 'Matemática'),
@@ -134,13 +134,13 @@ select school_id, full_name, prefix || '-' || lpad(i::text, 4, '0'),
   from _gen;
 
 insert into public.classroom_students (classroom_id, student_id, start_date)
-select g.classroom_id, s.id, date_trunc('year', current_date)::date
+select g.classroom_id, s.id, date_trunc('year', (now() at time zone 'America/Fortaleza')::date)::date
   from _gen g
   join public.students s on s.registration_code = g.prefix || '-' || lpad(g.i::text, 4, '0') and s.school_id = g.school_id;
 
 insert into public.classroom_students (classroom_id, student_id, start_date) values
-  ('20000000-0000-4000-a000-000000000001', '30000000-0000-4000-a000-000000000001', date_trunc('year', current_date)::date),
-  ('20000000-0000-4000-a000-000000000002', '30000000-0000-4000-a000-000000000002', date_trunc('year', current_date)::date);
+  ('20000000-0000-4000-a000-000000000001', '30000000-0000-4000-a000-000000000001', date_trunc('year', (now() at time zone 'America/Fortaleza')::date)::date),
+  ('20000000-0000-4000-a000-000000000002', '30000000-0000-4000-a000-000000000002', date_trunc('year', (now() at time zone 'America/Fortaleza')::date)::date);
 
 -- -----------------------------------------------------------------------------
 -- Responsáveis
@@ -160,7 +160,7 @@ insert into public.student_guardians (student_id, guardian_id, relationship) val
 -- -----------------------------------------------------------------------------
 create temporary table _days as
 select d::date as d
-  from generate_series(current_date - 42, current_date - 1, interval '1 day') d
+  from generate_series((now() at time zone 'America/Fortaleza')::date - 42, (now() at time zone 'America/Fortaleza')::date - 1, interval '1 day') d
  where extract(isodow from d) between 1 and 5;
 
 insert into public.attendance_sessions (id, school_id, classroom_id, lesson_date, lesson_slot, status, version, recorded_by, updated_by, completed_at)
@@ -224,22 +224,22 @@ select public.publish_announcement('10000000-0000-4000-a000-000000000001',
   'classroom', '20000000-0000-4000-a000-000000000001', false);
 
 insert into public.calendar_events (school_id, classroom_id, title, description, event_date, event_type) values
-  ('10000000-0000-4000-a000-000000000001', null, 'Reunião de pais e responsáveis', 'Auditório, 18h', current_date + 4, 'meeting'),
-  ('10000000-0000-4000-a000-000000000001', '20000000-0000-4000-a000-000000000001', 'Feira de Ciências', 'Quadra da escola', current_date + 9, 'event'),
-  ('10000000-0000-4000-a000-000000000001', '20000000-0000-4000-a000-000000000001', 'Avaliação de Matemática', 'Conteúdo: frações', current_date + 6, 'exam'),
-  ('10000000-0000-4000-a000-000000000001', null, 'Feriado municipal (fictício)', 'Sem aulas', current_date + 14, 'holiday');
+  ('10000000-0000-4000-a000-000000000001', null, 'Reunião de pais e responsáveis', 'Auditório, 18h', (now() at time zone 'America/Fortaleza')::date + 4, 'meeting'),
+  ('10000000-0000-4000-a000-000000000001', '20000000-0000-4000-a000-000000000001', 'Feira de Ciências', 'Quadra da escola', (now() at time zone 'America/Fortaleza')::date + 9, 'event'),
+  ('10000000-0000-4000-a000-000000000001', '20000000-0000-4000-a000-000000000001', 'Avaliação de Matemática', 'Conteúdo: frações', (now() at time zone 'America/Fortaleza')::date + 6, 'exam'),
+  ('10000000-0000-4000-a000-000000000001', null, 'Feriado municipal (fictício)', 'Sem aulas', (now() at time zone 'America/Fortaleza')::date + 14, 'holiday');
 
 insert into public.pedagogical_followups (school_id, student_id, identified_at, reason, situation, assigned_to, actions_taken, next_followup_date, status, created_by)
 values
-  ('10000000-0000-4000-a000-000000000001', '30000000-0000-4000-a000-000000000001', current_date - 1,
+  ('10000000-0000-4000-a000-000000000001', '30000000-0000-4000-a000-000000000001', (now() at time zone 'America/Fortaleza')::date - 1,
    'Faltas consecutivas identificadas pelo sistema',
    'Duas faltas consecutivas nas últimas aulas de Matemática.',
    '00000000-0000-4000-a000-000000000002',
-   'Contato telefônico agendado com a responsável.', current_date + 2, 'open',
+   'Contato telefônico agendado com a responsável.', (now() at time zone 'America/Fortaleza')::date + 2, 'open',
    '00000000-0000-4000-a000-000000000002');
 
 insert into public.pedagogical_followups (school_id, student_id, identified_at, reason, situation, assigned_to, actions_taken, status, outcome, closed_at, created_by)
-select '10000000-0000-4000-a000-000000000001', s.id, current_date - 20,
+select '10000000-0000-4000-a000-000000000001', s.id, (now() at time zone 'America/Fortaleza')::date - 20,
        'Frequência abaixo do mínimo configurado', 'Atrasos recorrentes no primeiro horário.',
        '00000000-0000-4000-a000-000000000002', 'Conversa com a família e ajuste do transporte escolar.',
        'closed', 'Frequência normalizada nas semanas seguintes.', now() - interval '5 days',
